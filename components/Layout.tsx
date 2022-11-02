@@ -38,7 +38,7 @@ const Home: NextPage<LayoutProps> = ({ children }: LayoutProps) => {
         {children}
       </main>
 
-      <footer className="flex h-24 w-full items-center justify-center border-t gap-3">
+      <footer className="flex h-24 w-full items-center justify-center border-t gap-4">
         <Link href={"https://www.twitter.com/berkeatac"}>twitter</Link>
         <Link href={"https://www.github.com/berkeatac"}>github</Link>
       </footer>

@@ -47,7 +47,7 @@ export async function getStaticProps() {
   )
     .then((res) => res.json())
     .then((data) => {
-      const array = data.items.map(
+      const array = data?.items?.map(
         (item: {
           fields: {
             title: string;

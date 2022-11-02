@@ -27,7 +27,7 @@ const SavedBox = ({ saved }: any) => {
 const Saved: NextPage<LayoutProps> = ({ saved, children }: LayoutProps) => {
   return (
     <div className="w-full h-full align-start justify-start">
-      {saved.data.map((item: any) => (
+      {saved?.data?.map((item: any) => (
         <SavedBox saved={item} />
       ))}
     </div>

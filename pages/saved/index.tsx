@@ -72,7 +72,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      saved,
+      saved: JSON.stringify(saved),
     },
   };
 }

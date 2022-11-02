@@ -11,7 +11,7 @@ interface LayoutProps {
 const SavedBox = ({ saved }: any) => {
   return (
     <Link href={saved.Url} target="_blank">
-      <div className="my-4 border-l-2 border-black pl-4 pr-4 py-2 hover:bg-slate-100 cursor-pointer transition-colors">
+      <div className="my-4 border-l-2 border-black pl-4 pr-4 py-2 hover:bg-snow cursor-pointer transition-colors">
         <h4 className="text-2xl mb-2 font-bold">{saved.Title}</h4>
         <p className="text-lg">{saved.Description}</p>
         <p className="text-sm text-slate-400 text-ellipsis max-w-xs leading-relaxed truncate">

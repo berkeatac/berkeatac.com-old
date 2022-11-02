@@ -12,22 +12,26 @@ const Home: NextPage<LayoutProps> = ({ children }: LayoutProps) => {
       <Head>
         <title>berkeatac</title>
         <link rel="icon" href="/favicon.ico" />
+        <style>
+          @import
+          url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100&display=swap');
+        </style>
       </Head>
 
-      <nav className="flex flex-row w-full max-w-7xl">
+      <nav className="flex flex-row w-full max-w-7xl fixed top-0 bg-opacity-90 z-40 backdrop-blur-md pt-4">
         <h1 className="text-3xl justify-start tracking-wider">
           <Link href={"/"}>berkeatac</Link>
         </h1>
         <div className="flex flex-row justify-end w-full">
           <Link
             href="/saved"
-            className="text-xl rounded-md px-2 py-1 hover:bg-slate-100 transition-colors"
+            className="text-xl rounded-md px-2 py-1 hover:bg-snow transition-colors"
           >
             saved
           </Link>
           <Link
             href="/work"
-            className="text-xl rounded-md px-2 py-1 hover:bg-slate-100 transition-colors"
+            className="text-xl rounded-md px-2 py-1 hover:bg-snow transition-colors"
           >
             work
           </Link>
@@ -38,7 +42,7 @@ const Home: NextPage<LayoutProps> = ({ children }: LayoutProps) => {
         {children}
       </main>
 
-      <footer className="flex h-24 w-full items-center justify-center border-t gap-4">
+      <footer className="flex h-12 w-full items-center justify-center border-t gap-4">
         <Link href={"https://www.twitter.com/berkeatac"}>twitter</Link>
         <Link href={"https://www.github.com/berkeatac"}>github</Link>
       </footer>

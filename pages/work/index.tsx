@@ -15,7 +15,7 @@ const WorkBox = ({ work }: any) => {
 
 const Work: NextPage = () => {
   return (
-    <div className="flex flex-row h-full">
+    <div className="flex flex-row h-full my-4">
       <div className="h-auto border-l-2 border-black w-1 mr-4" />
       <div>
         <div className="mb-4">
@@ -44,10 +44,18 @@ const Work: NextPage = () => {
         </div>
         <div className="mb-4">
           <h2 className="text-3xl leading-relaxed">Sahibinden</h2>
-          <h3 className="text-2xl leading-none">Frontend Developer</h3>
+          <h3 className="text-2xl leading-none">Software Developer</h3>
           <h3 className="text-2xl leading-none">Istanbul</h3>
           <p className="text-md text-slate-400 text-ellipsis max-w-xs leading-relaxed truncate">
             2018 - 2019
+          </p>
+        </div>
+        <div className="mb-4">
+          <h2 className="text-3xl leading-relaxed">ING Bank</h2>
+          <h3 className="text-2xl leading-none">Software Developer</h3>
+          <h3 className="text-2xl leading-none">Istanbul</h3>
+          <p className="text-md text-slate-400 text-ellipsis max-w-xs leading-relaxed truncate">
+            2017 - 2018
           </p>
         </div>
       </div>

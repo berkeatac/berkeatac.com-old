@@ -19,10 +19,10 @@ const Home: NextPage<LayoutProps> = ({ children }: LayoutProps) => {
       </Head>
 
       <nav className="flex flex-row w-full max-w-7xl fixed top-0 bg-opacity-90 z-40 backdrop-blur-md pt-4">
-        <h1 className="text-3xl justify-start tracking-wider">
+        <h1 className="text-3xl justify-start tracking-wider ">
           <Link href={"/"}>berkeatac</Link>
         </h1>
-        <div className="flex flex-row justify-end w-full">
+        <div className="flex flex-row justify-end w-full mr-16 overflow-x-scroll">
           <Link
             href="/saved"
             className="text-xl rounded-md px-2 py-1 hover:bg-snow transition-colors"

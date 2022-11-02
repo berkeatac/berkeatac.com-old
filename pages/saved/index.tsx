@@ -1,7 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import base from "../api/client";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -10,12 +9,15 @@ interface LayoutProps {
 
 const SavedBox = ({ saved }: any) => {
   return (
-    <Link href={saved.Url} target="_blank">
-      <div className="my-4 border-l-2 border-black pl-4 pr-4 py-2 hover:bg-snow cursor-pointer transition-colors">
-        <h4 className="text-2xl mb-2 font-bold">{saved.Title}</h4>
-        <p className="text-lg">{saved.Description}</p>
+    <Link href={saved.url} target="_blank">
+      <div className="my-4 border-l-2 border-black pl-4 pr-4 py-2 hover:shadow-sm hover:bg-whitesmoke cursor-pointer transition-colors">
+        <h4 className="text-2xl mb-2 font-bold">{saved.title}</h4>
+        <p className="text-lg">{saved.description}</p>
         <p className="text-sm text-slate-400 text-ellipsis max-w-xs leading-relaxed truncate">
-          {saved.Url}
+          {saved.url}
+        </p>
+        <p className="text-sm text-slate-600 max-w-xs leading-9 truncate">
+          {new Date(saved.createdAt).toLocaleDateString()}
         </p>
       </div>
     </Link>
@@ -36,32 +38,37 @@ const Saved: NextPage<LayoutProps> = ({ saved, children }: LayoutProps) => {
 // It won't be called on client-side, so you can even do
 // direct database queries.
 export async function getStaticProps() {
-  const getSaved = () =>
-    new Promise((resolve, reject) => {
-      let resdata: { data: any } = { data: [] };
-      base("Table 1")
-        .select({
-          maxRecords: 3,
-          view: "Grid view",
-        })
-        .eachPage(
-          async function page(records, fetchNextPage) {
-            records.forEach(function (record) {
-              resdata = { data: [...(resdata.data || []), record.fields] };
-            });
-            fetchNextPage();
-          },
-          async function done(err) {
-            if (err) {
-              console.error(err);
-              reject(err);
-            }
-            resolve(resdata);
-          }
-        );
-    });
+  const saved = await fetch(
+    `https://cdn.contentful.com/spaces/${
+      process.env.CONTENTFUL_SPACE_ID
+    }/environments/${"master"}/entries?access_token=${
+      process.env.CONTENTFUL_DELIVERY_ACCESS_TOKEN
+    }`
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      const array = data.items.map(
+        (item: {
+          fields: {
+            title: string;
+            description: string;
+            url: string;
+            createdAt: string;
+          };
+        }) => {
+          return {
+            title: item.fields.title,
+            description: item.fields.description,
+            url: item.fields.url,
+            createdAt: item.fields.createdAt || null,
+          };
+        }
+      );
 
-  const saved = await getSaved();
+      return {
+        data: array,
+      };
+    });
 
   return {
     props: {
